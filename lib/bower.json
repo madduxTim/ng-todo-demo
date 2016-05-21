@@ -3,7 +3,7 @@
   "description": "",
   "main": "app.js",
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://github.com/madduxTim/ng-todo-demo",
   "ignore": [
     "**/.*",
     "node_modules",
