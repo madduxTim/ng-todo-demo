@@ -39,11 +39,9 @@ app.controller("TodoCtrl", function($scope){
     ];
 
     $scope.newItem = function(){
-        console.log("newItem");
         $scope.showListView = false;
     };
     $scope.allItem = function(){
-        console.log("allItem");
         $scope.showListView = true;
     };
     $scope.addNewItem = function(){

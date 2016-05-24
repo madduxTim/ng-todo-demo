@@ -4,35 +4,35 @@ app.factory("itemStorage", function($q, $http){
     var getItemList = function(){
         let items = [];
         return $q(function(resolve, reject){
-            $http.get("https://todo-appz2.firebaseio.com/items.json")
+            $http.get("https://angular-tdm.firebaseio.com/items.json")
                 .success(function(itemObject){
                     var itemCollection = itemObject;
                     Object.keys(itemCollection).forEach(function(key){
                         itemCollection[key].id=key;
                         items.push(itemCollection[key]);
-                    })
+                    });
                     resolve(items);
                 })
                 .error(function(error){
                     reject(error);
                 });
-        })
-    }
+        });
+    };
 
     var deleteItem = function(itemId){
         return $q(function(resolve, reject){
             $http
-                .delete(`https://todo-appz2.firebaseio.com/items/${itemId}.json`)
+                .delete(`https://angular-tdm.firebaseio.com/items/${itemId}.json`)
                 .success(function(objectFromFirebase){
-                    resolve(objectFromFirebase)
-                })
-        })
-    }
+                    resolve(objectFromFirebase);
+                });
+        });
+    };
 
     var postNewItem = function(newItem){
         return $q(function(resolve, reject) {
             $http.post(
-                "https://todo-appz2.firebaseio.com/items.json",
+                "https://angular-tdm.firebaseio.com/items.json",
                 JSON.stringify({
                     assignedTo: newItem.assignedTo,
                     dependencies: newItem.dependencies,
@@ -49,8 +49,8 @@ app.factory("itemStorage", function($q, $http){
                 }
             );
         });
-    }
+    };
 
-    return {getItemList:getItemList, deleteItem:deleteItem, postNewItem:postNewItem}
+    return {getItemList:getItemList, deleteItem:deleteItem, postNewItem:postNewItem};
 
-})
+});
