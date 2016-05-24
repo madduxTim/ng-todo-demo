@@ -1,35 +1,24 @@
 "use strict";
-app.controller("ItemListCtrl", function($scope){
-    $scope.items = [
-        {
-            id: 0,
-            task: "mow the lawn",
-            isCompleted: true,
-            dueDate: "12/5/2017",
-            assignedTo: "greg",
-            location: "Zoe's house",
-            urgency: "low",
-            dependencies: ["sunshine, clippers, hat, water, headphones"]
-        },
-        {
-            id: 1,
-            task: "grade some quizzes zoe",
-            isCompleted: false,
-            dueDate: "12/5/2015",
-            assignedTo: "joe",
-            location: "NSS",
-            urgency: "high",
-            dependencies: ["hi-fi, tissues, vodka"]
-        },
-        {
-            id: 2,
-            task: "take a nap",
-            isCompleted: false,
-            dueDate: "5/21/2016",
-            assignedTo: "zoe",
-            location: "Zoe's house",
-            urgency: "medium",
-            dependencies: ["hammock, cat, pillow"]
+app.controller("ItemListCtrl", function($scope, $http){
+    $scope.items = [];
+    var getItems = function(){
+        $http.get("https://angular-tdm.firebaseio.com/items.json")  
+            .success(function(itemObject){
+                var itemCollection = itemObject;
+                Object.keys(itemCollection).forEach(function(key){
+                    itemCollection[key].id=key;
+                    $scope.items.push(itemCollection[key]);
+                })
+            })
+    }
+    getItems();
+        $scope.itemDelete = function(itemId){
+            $http
+                .delete(`https://angular-tdm.firebaseio.com/items/${itemId}.json`)
+                .success(function(response){
+                    $scope.items = [];
+                    getItems();
+                })
+
         }
-    ];
 });

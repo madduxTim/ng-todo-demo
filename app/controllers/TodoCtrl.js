@@ -1,4 +1,6 @@
 "use strict";
+
+// THIS IS ALL THREE FILES. DON'T NEED IT, BUT HELPS? 
 app.controller("TodoCtrl", function($scope){
     $scope.welcome = "hello";
     $scope.showListView = true;
