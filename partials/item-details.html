@@ -1,0 +1,10 @@
+<h1>{{selectedItem.task}}</h1>
+
+<button class="btn btn-info">Edit</button> 
+
+<h3>Assigned To: {{selectedItem.assignedTo}}</h3>
+<h3>Location: {{selectedItem.location}}</h3>
+<h3>Necessary Stuff: {{selectedItem.dependencies}}</h3>
+<h3>Urgency: {{selectedItem.urgency}}</h3>
+<h3>Due By: {{selectedItem.dueDate}}</h3>
+<h3>Completed?: {{(selectedItem.dueDate ? "yes" : "no")}}</h3>
