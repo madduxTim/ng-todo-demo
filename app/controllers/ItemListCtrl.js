@@ -15,4 +15,11 @@ app.controller("ItemListCtrl", function($scope, $location, itemStorage){
             });
         });
     };
+
+    $scope.inputChange = function(item){
+        itemStorage.updateCompletedStatus(item)
+            .then(function(response){
+                console.log(response);
+        });
+    };
 });

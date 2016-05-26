@@ -10,6 +10,7 @@
   </div>
 </div>
 <!-- THIS IS A TITLE BAR -->
+<h3>In Progress</h3>
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="col-xs-1"></div>
@@ -21,13 +22,36 @@
 </div>
 
 <div ng-repeat="item in items | filter: searchText">
-  <div class="panel panel-default">
+  <div class="panel panel-default" ng-hide="item.isCompleted">
     <div class="panel-body">
-      <div class="col-xs-1"><input type="checkbox" name=""/></div>
+      <div class="col-xs-1"><input type="checkbox" ng-model="item.isCompleted" ng-change="inputChange(item)"/></div>
       <div class="col-xs-7"><a ng-href="#/items/{{item.id}}">{{item.task}}</a></div>
       <div class="col-xs-2">{{item.dueDate}}</div>
       <div class="col-xs-1">{{item.assignedTo}}</div>
       <div class="col-xs-1"><button class="btn btn-danger" ng-click="itemDelete(item.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></div>
+    </div>
+  </div>
+</div>
+
+<h3>Completed</h3>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-7">Task</a></div>
+    <div class="col-xs-2">Due Date</div>
+    <div class="col-xs-1">Assigned To</div>
+    <div class="col-xs-1"></div>
+  </div>
+</div>
+
+<div ng-repeat="item in items | filter: {isCompleted: true}">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-xs-1"><input type="checkbox" ng-model="item.isCompleted" ng-change="inputChange(item)"/></div>
+      <div class="col-xs-7"><a ng-href="#/items/{{item.id}}">{{item.task}}</a></div>
+      <div class="col-xs-2">{{item.dueDate}}</div>
+      <div class="col-xs-1">{{item.assignedTo}}</div>
+      <div class="col-xs-1"></div>
     </div>
   </div>
 </div>
