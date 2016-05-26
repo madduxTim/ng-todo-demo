@@ -1,5 +1,5 @@
 "use strict";
-app.controller("ItemViewCtrl", function($scope, $http, $routeParams, itemStorage){
+app.controller("ItemViewCtrl", function($scope, $routeParams, itemStorage){
     $scope.items = [];
     $scope.selectedItem = {};
     console.log($routeParams.itemId);
