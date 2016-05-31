@@ -1,5 +1,5 @@
 "use strict";
-app.controller("ItemListCtrl", function($scope, $http, $location, itemStorage){
+app.controller("ItemListCtrl", function($scope, $location, itemStorage){
     $scope.items = [];
 
     itemStorage.getItemList().then(function(itemCollection){
@@ -13,6 +13,13 @@ app.controller("ItemListCtrl", function($scope, $http, $location, itemStorage){
             itemStorage.getItemList().then(function(itemCollection){
                 $scope.items = itemCollection;
             });
+        });
+    };
+
+    $scope.inputChange = function(item){
+        itemStorage.updateCompletedStatus(item)
+            .then(function(response){
+                console.log(response);
         });
     };
 });
