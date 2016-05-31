@@ -1,17 +1,19 @@
-#ng-todo-demo
+# AngularJS Todo App
 
-##Description 
+### Description:  
+This app allows users to log in and create todo itmes.  Once created the items can be deleated, edited, and marked complete.  
 
-## How to Run: 
-1. Clone down repo
-2. cd into lib/
-* npm install
-* bower install 
-3. in root: http-server
-4. go to browser localhost: 8080
+### Screenshots
+![Finished product](https://raw.githubusercontent.com/madduxTim/ng-todo-demo/master/img/screenshot.png)
 
-For development (to view lint errors and compile SASS): 
-1. do all above
-2. open new terminal 
-* cd lib/
-* gulp
+### To run:
+```
+$ cd lib /
+$ npm install
+$ bower install
+$ gulp
+$ cd ..
+$ http-server -p 8080
+```
+
+Your app should now be running on [localhost:8080](http://localhost:8080/).
